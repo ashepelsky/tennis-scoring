@@ -9,48 +9,34 @@ import java.util.Map;
 public class TennisScoringImpl implements TennisScoring {
 
     private Map<Player, Score> gameScore;
-    private Player p1;
-    private Player p2;
-    private Score s1;
-    private Score s2;
+
+    private PlayerGameSession firstPlayer;
+    private PlayerGameSession secondPlayer;
 
     public TennisScoringImpl(Player player1, Player player2) {
         gameScore = new HashMap<>();
 
-        gameScore.put(p1 = player1, s1 = Score.LOVE);
-        gameScore.put(p2 = player2, s2 = Score.LOVE);
+        firstPlayer = new PlayerGameSession(player1);
+        secondPlayer = new PlayerGameSession(player2);
+
+        firstPlayer.setOpponentSession(secondPlayer);
+        secondPlayer.setOpponentSession(firstPlayer);
 
     }
 
     public void pointWonBy(Player player) {
 
-        if(player.equals(p1)) {
-
-            if (s2.equals(Score.ADVANTAGE)) {
-                s2 = Score.DEUCE;
-            }
-            s1 = s1.next(s2);
-
-
+        if(player.equals(firstPlayer.getPlayer())) {
+            firstPlayer.score();
         } else {
-
-            if (s1.equals(Score.ADVANTAGE)) {
-                s1 = Score.DEUCE;
-            }
-
-            s2 = s2.next(s1);
-        }
-
-        if (s1.equals(Score.FORTY) && s2.equals(Score.FORTY)) {
-            s2 = Score.DEUCE;
-            s1 = Score.DEUCE;
+            secondPlayer.score();
         }
 
     }
 
     public Map<Player, Score> getScore() {
-        gameScore.put(p1, s1);
-        gameScore.put(p2, s2);
+        gameScore.put(firstPlayer.getPlayer(), firstPlayer.getScore());
+        gameScore.put(secondPlayer.getPlayer(), secondPlayer.getScore());
         return gameScore;
     }
 

@@ -88,6 +88,24 @@ public class TennisScoringUnitTest {
     }
 
     @Test
+    public void playerTwoGetAdvantageAfterScoringInDeuce() {
+        tennisScoring.pointWonBy(PLAYER_2);
+        tennisScoring.pointWonBy(PLAYER_2);
+        tennisScoring.pointWonBy(PLAYER_2);
+
+        tennisScoring.pointWonBy(PLAYER_1);
+        tennisScoring.pointWonBy(PLAYER_1);
+        tennisScoring.pointWonBy(PLAYER_1);
+
+        tennisScoring.pointWonBy(PLAYER_2);
+
+        Map<Player, Score> result = tennisScoring.getScore();
+
+        assertEquals("If a player scores and the game is in a deuce state, the scoring player gets 'ADVANTAGE'",
+            Score.ADVANTAGE, result.get(PLAYER_2));
+    }
+
+    @Test
     public void playerOneLoseAdvantageAfterOpponentScoring() {
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
