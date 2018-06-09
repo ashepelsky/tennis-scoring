@@ -8,7 +8,7 @@ public class TestDrive {
         Score score = Score.LOVE;
 
         for (int i = 0; i < 4; i++) {
-            System.out.println(score = score.next());
+//            System.out.println(score = score.next());
         }
     }
 }
