@@ -171,7 +171,7 @@ public class FunctionalTennisScoringUnitTest {
         tennisScoring.pointWonBy(gameSetState, PLAYER_2);
 
 
-        Score result = gameSetState.getFirstPlayer().getScore();
+        Score result = gameSetState.getSecondPlayer().getScore();
 
         assertEquals("If a player scores and has 'ADVANTAGE' then the scoring player has 'WON'",
             Score.WON, result);
