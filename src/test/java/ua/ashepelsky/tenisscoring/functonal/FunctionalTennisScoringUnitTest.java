@@ -58,6 +58,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playerOneWinsAfterFourPoints_checkPlayerScore() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -66,11 +67,12 @@ public class FunctionalTennisScoringUnitTest {
         Score result = gameSetState.getFirstPlayer().getScore();
 
         assertEquals("A game should be won by the first player to have won at least four points in total" +
-                " and at least two points more than the opponent", WON, result);
+            " and at least two points more than the opponent", WON, result);
     }
 
     @Test
     public void playerOneWinsAfterFourPoints_checkScoreString() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -84,6 +86,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playersGotDeuce_checkPlayerScore() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -104,6 +107,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playersGotDeuce_checkScoreString() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -120,6 +124,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playerOneGotAdvantageAfterScoringInDeuce() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -138,6 +143,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playerOneLosesAdvantageAfterOpponentScoring() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
@@ -148,7 +154,6 @@ public class FunctionalTennisScoringUnitTest {
 
         tennisScoring.pointWonBy(gameSetState, PLAYER_1);
         tennisScoring.pointWonBy(gameSetState, PLAYER_2);
-
 
         Score result = gameSetState.getFirstPlayer().getScore();
 
@@ -159,6 +164,7 @@ public class FunctionalTennisScoringUnitTest {
 
     @Test
     public void playerTwoWinsAfterScoringInAdvantage() {
+
         tennisScoring.pointWonBy(gameSetState, PLAYER_2);
         tennisScoring.pointWonBy(gameSetState, PLAYER_2);
         tennisScoring.pointWonBy(gameSetState, PLAYER_2);
@@ -178,7 +184,9 @@ public class FunctionalTennisScoringUnitTest {
     }
 
     private String expectedScoreString(Score one, Score two) {
+
         return FIRST_PLAYER_NAME + ": " + one.name() + " | "
-            + SECOND_PLAYER_NAME +": " + two.name();
+            + SECOND_PLAYER_NAME + ": " + two.name();
     }
+
 }

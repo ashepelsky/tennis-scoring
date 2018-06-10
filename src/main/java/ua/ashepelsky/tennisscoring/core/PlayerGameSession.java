@@ -1,11 +1,14 @@
 package ua.ashepelsky.tennisscoring.core;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
 public class PlayerGameSession {
 
     private Player player;
+    @Setter
     private Score score;
 
     private PlayerGameSession opponentSession;
@@ -51,4 +54,5 @@ public class PlayerGameSession {
         score = Score.DEUCE;
         opponentSession.setScore(Score.DEUCE);
     }
+
 }

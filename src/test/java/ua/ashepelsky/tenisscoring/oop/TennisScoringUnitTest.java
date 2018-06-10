@@ -20,6 +20,7 @@ public class TennisScoringUnitTest {
 
     @Before
     public void before() {
+
         tennisScoring = new TennisScoringImpl(PLAYER_1, PLAYER_2);
     }
 
@@ -47,6 +48,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playerTwoScorePoint() {
+
         tennisScoring.pointWonBy(PLAYER_2);
 
         Map<Player, Score> result = tennisScoring.getScore();
@@ -56,6 +58,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playerOneWinsAfterFourPoints() {
+
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -69,6 +72,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playersGotDeuce() {
+
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -80,16 +84,17 @@ public class TennisScoringUnitTest {
         Map<Player, Score> result = tennisScoring.getScore();
 
         assertEquals("If at least three points have been scored by each player, and the scores are equal" +
-            " the score should be 'DEUCE'",
+                " the score should be 'DEUCE'",
             Score.DEUCE, result.get(PLAYER_1));
 
         assertEquals("If at least three points have been scored by each player, and the scores are equal" +
-            " the score should be 'DEUCE'",
+                " the score should be 'DEUCE'",
             Score.DEUCE, result.get(PLAYER_2));
     }
 
     @Test
     public void playerOneGetAdvantageAfterScoringInDeuce() {
+
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -108,6 +113,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playerTwoGetAdvantageAfterScoringInDeuce() {
+
         tennisScoring.pointWonBy(PLAYER_2);
         tennisScoring.pointWonBy(PLAYER_2);
         tennisScoring.pointWonBy(PLAYER_2);
@@ -126,6 +132,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playerOneLoseAdvantageAfterOpponentScoring() {
+
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -146,6 +153,7 @@ public class TennisScoringUnitTest {
 
     @Test
     public void playerTwoWinsAfterScoringInAdvantage() {
+
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);

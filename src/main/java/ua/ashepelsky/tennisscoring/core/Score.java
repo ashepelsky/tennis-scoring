@@ -5,8 +5,10 @@ public enum Score {
     FIFTEEN,
     THIRTY,
     FORTY {
+
         @Override
         public Score next(Score opponentScore) {
+
             if (opponentScore.ordinal() < this.ordinal()) {
                 return WON;
             } else if (opponentScore.equals(this)) {
@@ -17,11 +19,13 @@ public enum Score {
         }
     },
     DEUCE {
+
         @Override
         public Score next(Score opponentScore) {
+
             if (opponentScore.equals(DEUCE)) {
                 return ADVANTAGE;
-            } else if(opponentScore.equals(ADVANTAGE)) {
+            } else if (opponentScore.equals(ADVANTAGE)) {
                 return DEUCE;
             } else {
                 throw new IllegalStateException("Invalid game state. Opponent score must be ADVANTAGE or DEUCE");
@@ -30,6 +34,7 @@ public enum Score {
     },
     ADVANTAGE,
     WON;
+
 
     private static Score[] scores = Score.values();
 

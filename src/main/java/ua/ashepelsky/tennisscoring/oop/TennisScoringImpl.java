@@ -15,8 +15,8 @@ public class TennisScoringImpl implements TennisScoring {
     private PlayerGameSession secondPlayer;
 
     public TennisScoringImpl(Player player1, Player player2) {
-        gameScore = new HashMap<>();
 
+        gameScore = new HashMap<>();
         firstPlayer = new PlayerGameSession(player1);
         secondPlayer = new PlayerGameSession(player2);
 
@@ -25,7 +25,7 @@ public class TennisScoringImpl implements TennisScoring {
 
     public void pointWonBy(Player player) {
 
-        if(player.equals(firstPlayer.getPlayer())) {
+        if (player.equals(firstPlayer.getPlayer())) {
             firstPlayer.score();
         } else {
             secondPlayer.score();
@@ -34,6 +34,7 @@ public class TennisScoringImpl implements TennisScoring {
     }
 
     public Map<Player, Score> getScore() {
+
         gameScore.put(firstPlayer.getPlayer(), firstPlayer.getScore());
         gameScore.put(secondPlayer.getPlayer(), secondPlayer.getScore());
         return gameScore;

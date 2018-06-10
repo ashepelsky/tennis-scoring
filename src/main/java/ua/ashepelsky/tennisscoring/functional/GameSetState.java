@@ -11,10 +11,12 @@ public class GameSetState {
     private PlayerGameSession secondPlayer;
 
     public GameSetState(Player player1, Player player2) {
+
         firstPlayer = new PlayerGameSession(player1);
         secondPlayer = new PlayerGameSession(player2);
 
         firstPlayer.setOpponentSession(secondPlayer);
         secondPlayer.setOpponentSession(firstPlayer);
     }
+
 }

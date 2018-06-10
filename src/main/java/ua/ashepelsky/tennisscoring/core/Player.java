@@ -6,6 +6,6 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public class Player {
-    private String name;
 
+    private String name;
 }

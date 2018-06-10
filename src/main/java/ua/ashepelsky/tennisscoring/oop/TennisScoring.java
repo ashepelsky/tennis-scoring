@@ -8,7 +8,6 @@ import java.util.Map;
 public interface TennisScoring {
 
     void pointWonBy(Player player);
-
     Map<Player, Score> getScore();
 
 }
