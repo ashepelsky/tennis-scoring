@@ -1,6 +1,7 @@
 package ua.ashepelsky.tennisscoring.oop;
 
 import ua.ashepelsky.tennisscoring.core.Player;
+import ua.ashepelsky.tennisscoring.core.PlayerGameSession;
 import ua.ashepelsky.tennisscoring.core.Score;
 
 import java.util.HashMap;
@@ -20,8 +21,6 @@ public class TennisScoringImpl implements TennisScoring {
         secondPlayer = new PlayerGameSession(player2);
 
         firstPlayer.setOpponentSession(secondPlayer);
-        secondPlayer.setOpponentSession(firstPlayer);
-
     }
 
     public void pointWonBy(Player player) {

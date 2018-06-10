@@ -36,6 +36,25 @@ public class TennisScoringUnitTest {
     }
 
     @Test
+    public void playerOneScorePoint() {
+
+        tennisScoring.pointWonBy(PLAYER_1);
+
+        Map<Player, Score> result = tennisScoring.getScore();
+
+        assertEquals("One point should be scored", Score.FIFTEEN, result.get(PLAYER_1));
+    }
+
+    @Test
+    public void playerTwoScorePoint() {
+        tennisScoring.pointWonBy(PLAYER_2);
+
+        Map<Player, Score> result = tennisScoring.getScore();
+
+        assertEquals("One point should be scored", Score.FIFTEEN, result.get(PLAYER_2));
+    }
+
+    @Test
     public void playerOneWinsAfterFourPoints() {
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -49,7 +68,7 @@ public class TennisScoringUnitTest {
     }
 
     @Test
-    public void playersGetDeuce() {
+    public void playersGotDeuce() {
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
         tennisScoring.pointWonBy(PLAYER_1);
@@ -101,7 +120,7 @@ public class TennisScoringUnitTest {
 
         Map<Player, Score> result = tennisScoring.getScore();
 
-        assertEquals("If a player scores and the game is in a deuce state, the scoring player gets 'ADVANTAGE'",
+        assertEquals("If a player scores and the game is in a deuce state, the scoring player should get 'ADVANTAGE'",
             Score.ADVANTAGE, result.get(PLAYER_2));
     }
 
@@ -120,7 +139,8 @@ public class TennisScoringUnitTest {
 
         Map<Player, Score> result = tennisScoring.getScore();
 
-        assertEquals("If a player scores and his opponent has 'advantage' then the game is tied in a 'DEUCE' state",
+        assertEquals("If a player scores and his opponent has 'advantage' then the game should be tied in a" +
+                " 'DEUCE' state",
             Score.DEUCE, result.get(PLAYER_1));
     }
 

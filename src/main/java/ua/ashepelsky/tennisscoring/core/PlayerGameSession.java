@@ -1,14 +1,13 @@
-package ua.ashepelsky.tennisscoring.oop;
+package ua.ashepelsky.tennisscoring.core;
 
 import lombok.Data;
-import ua.ashepelsky.tennisscoring.core.Player;
-import ua.ashepelsky.tennisscoring.core.Score;
 
 @Data
 public class PlayerGameSession {
 
     private Player player;
     private Score score;
+
     private PlayerGameSession opponentSession;
 
     public PlayerGameSession(Player player) {
@@ -25,6 +24,16 @@ public class PlayerGameSession {
 
         if (isDeuce() || isOpponentAdvantage())
             this.deuce();
+
+    }
+
+    public void setOpponentSession(PlayerGameSession opponentSession) {
+
+        this.opponentSession = opponentSession;
+
+        if (opponentSession.getOpponentSession() == null) {
+            opponentSession.setOpponentSession(this);
+        }
     }
 
     private boolean isDeuce() {
