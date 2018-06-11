@@ -11,10 +11,8 @@ public enum Score {
 
             if (opponentScore.ordinal() < this.ordinal()) {
                 return WON;
-            } else if (opponentScore.equals(this)) {
-                return DEUCE;
             } else {
-                return super.next(opponentScore);
+                throw new IllegalStateException("Invalid game state. Game should be in DEUCE state");
             }
         }
     },
@@ -33,20 +31,21 @@ public enum Score {
         }
     },
     ADVANTAGE,
-    WON;
+    WON {
+
+        @Override
+        public Score next(Score opponentScore) {
+
+            throw new IllegalStateException("Set is already finished");
+        }
+    };
 
 
     private static Score[] scores = Score.values();
 
     public Score next(Score opponentScore) {
 
-        if (opponentScore.equals(WON) || this.equals(WON)) {
-            throw new IllegalStateException("Set is already finished");
-        }
-
-        int nextOrdinal = this.ordinal() + 1;
-
-        return scores[nextOrdinal % scores.length];
+        return scores[this.ordinal() + 1];
     }
 
 }
